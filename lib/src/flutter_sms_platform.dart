@@ -57,9 +57,7 @@ class FlutterSmsPlatform extends PlatformInterface {
   }
 
   Future<bool> canSendSMS() {
-    return _channel
-        .invokeMethod<bool>('canSendSMS')
-        .then((value) => value ?? false);
+    return _channel.invokeMethod<bool>('canSendSMS').then((value) => value ?? false);
   }
 
   Future<bool> launchSmsMulti(List<String> numbers, [String? body]) {
@@ -69,9 +67,9 @@ class FlutterSmsPlatform extends PlatformInterface {
     String _phones = numbers.join(';');
     if (body != null) {
       final _body = Uri.encodeComponent(body);
-      return launch('sms:/open?addresses=$_phones${separator}body=$_body');
+      return launchUrl(Uri.parse('sms:/open?addresses=$_phones${separator}body=$_body'));
     }
-    return launch('sms:/open?addresses=$_phones');
+    return launchUrl(Uri.parse('sms:/open?addresses=$_phones'));
   }
 
   Future<bool> launchSms(String? number, [String? body]) {
@@ -79,9 +77,9 @@ class FlutterSmsPlatform extends PlatformInterface {
     number ??= '';
     if (body != null) {
       final _body = Uri.encodeComponent(body);
-      return launch('sms:/$number${separator}body=$_body');
+      return launchUrl(Uri.parse('sms:/$number${separator}body=$_body'));
     }
-    return launch('sms:/$number');
+    return launchUrl(Uri.parse('sms:/$number'));
   }
 
   String get separator => isCupertino() ? '&' : '?';

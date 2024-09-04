@@ -43,8 +43,8 @@ class _MyAppState extends State<MyApp> {
 
   Future<bool> _canSendSMS() async {
     bool _result = await canSendSMS();
-    setState(() => _canSendSMSMessage =
-        _result ? 'This unit can send SMS' : 'This unit cannot send SMS');
+    setState(() =>
+        _canSendSMSMessage = _result ? 'This unit can send SMS' : 'This unit cannot send SMS');
     return _result;
   }
 
@@ -112,8 +112,7 @@ class _MyAppState extends State<MyApp> {
               leading: const Icon(Icons.people),
               title: TextField(
                 controller: _controllerPeople,
-                decoration:
-                    const InputDecoration(labelText: 'Add Phone Number'),
+                decoration: const InputDecoration(labelText: 'Add Phone Number'),
                 keyboardType: TextInputType.number,
                 onChanged: (String value) => setState(() {}),
               ),
@@ -150,8 +149,7 @@ class _MyAppState extends State<MyApp> {
             ),
             SwitchListTile(
                 title: const Text('Send Direct'),
-                subtitle: const Text(
-                    'Should we skip the additional dialog? (Android only)'),
+                subtitle: const Text('Should we skip the additional dialog? (Android only)'),
                 value: sendDirect,
                 onChanged: (bool newValue) {
                   setState(() {
@@ -162,9 +160,9 @@ class _MyAppState extends State<MyApp> {
               padding: const EdgeInsets.all(8),
               child: ElevatedButton(
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.resolveWith(
+                  backgroundColor: WidgetStateProperty.resolveWith(
                       (states) => Theme.of(context).colorScheme.secondary),
-                  padding: MaterialStateProperty.resolveWith(
+                  padding: WidgetStateProperty.resolveWith(
                       (states) => const EdgeInsets.symmetric(vertical: 16)),
                 ),
                 onPressed: () {

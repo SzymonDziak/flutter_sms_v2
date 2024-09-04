@@ -76,10 +76,17 @@ List<String> recipents = ["1234567890", "5556787676"];
 print(_result);
 ```
 
-NOTE: This also requires the SEND_SMS permission to be added to the AndroidManifest.xml
+NOTE: This also requires the SEND_SMS permission to be added to the AndroidManifest.xml and "smsto" query
 
 ```
     <uses-permission android:name="android.permission.SEND_SMS"/>
+
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.SENDTO" />
+            <data android:scheme="smsto"/>
+        </intent>
+    </queries>
     
     <application
       ...
