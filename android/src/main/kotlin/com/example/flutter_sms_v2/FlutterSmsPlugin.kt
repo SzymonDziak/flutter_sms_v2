@@ -128,12 +128,12 @@ class FlutterSmsPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
 
         for (num in numbers) {
             Log.d("Flutter SMS", "msg.length() : " + message.toByteArray().size)
-            if (message.toByteArray().size > 80) {
-                val partMessage = mSmsManager.divideMessage(message)
-                mSmsManager.sendMultipartTextMessage(num, null, partMessage, null, null)
-            } else {
-                mSmsManager.sendTextMessage(num, null, message, sentIntent, null)
-            }
+//            if (message.toByteArray().size > 80) {
+            val partMessage = mSmsManager.divideMessage(message)
+            mSmsManager.sendMultipartTextMessage(num, null, partMessage, null, null)
+//            } else {
+//                mSmsManager.sendTextMessage(num, null, message, sentIntent, null)
+//            }
         }
 
         result.success("SMS Sent!")
