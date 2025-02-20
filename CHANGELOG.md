@@ -1,3 +1,8 @@
+# 2.3.4
+
+* Remove flutter register v1 embedding [flutter 3.29 support]
+* Send only multipart message
+
 # 2.3.3
 
 * Adding ability to send SMS directly on Android (#57).
