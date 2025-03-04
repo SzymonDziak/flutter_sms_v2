@@ -18,18 +18,9 @@ import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
-import io.flutter.plugin.common.PluginRegistry.Registrar
 
 class FlutterSmsPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
-    companion object {
-        @JvmStatic
-        fun registerWith(registrar: Registrar) {
-            val plugin = FlutterSmsPlugin()
-            plugin.setupCallbackChannels(registrar.messenger())
-            plugin.activity = registrar.activity()
-        }
-    }
-        
+
     private lateinit var mChannel: MethodChannel
     private var activity: Activity? = null
     private val REQUEST_CODE_SEND_SMS = 205
